@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+  <style>
+    .introcontainer {
+      width: 100%;
+      height: 100%;
+      /* margin: auto; */
+    }
+
+    .swiper-container {
+      width: 100%;
+      /* height: 100vh; */
+      background: rgb(10, 10, 11);
+    }
+
+    .swiper-slide {
+      width: 500px;
+      height: 100%;
+      display: flex;
+      /* margin: auto; */
+      align-items: center;
+      justify-content: center;
+      background: rgb(255, 255, 255);
+    }
+
+    .dracs {
+      width: 100%;
+      height: auto;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drac img {
+      object-fit: cover;
+      /* border-radius: 5px; */
+      /* max-width: 100%; */
+      width: 100vw;
+      height: auto;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+
+    .drac.two img {
+      filter: sepia(100%) hue-rotate(190deg) saturate(300%);
+    }
+
+    .drac.three img {
+      height: 100vh;
+    }
+
+    .drac.four img {
+      filter: invert(4%) sepia(75%) saturate(500%) hue-rotate(356deg) brightness(70%) contrast(103%);
+    }
+
+    .text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 0px;
+      max-width: 100%;
+      width: 500px;
+
+    }
+
+    .title-box {
+      display: flex;
+      text-align: left;
+      max-width: 1000px;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 0 !important;
+      bottom: 50px;
+      justify-content: center;
+      color: #fff;
+      opacity: 0;
+      z-index: 15;
+    }
+
+    .title-box h1 {
+      display: block;
+      /* font-family: "Futura"; */
+      font-weight: 700;
+      line-height: normal;
+      max-width: 100%;
+      font-size: 10vmin;
+    }
+
+    .title-box p {
+      /* font-family: "HelveticaNow"; */
+      font-size: 2vmin;
+      padding-top: 0;
+      margin: 0;
+      padding-left: 1%;
+      max-width: 100%;
+    }
+
+    .drac .title-box .seperator {
+      height: 1px;
+      width: 10%;
+      background: white;
+      position: absolute;
+      content: "";
+      left: -15%;
+      top: 50%;
+    }
+
+    .swiper-slide .title-box {
+      transform: translateX(-50%);
+      transition: all .7s ease .3s;
+    }
+
+    .swiper-slide-active .title-box {
+      transform: translateX(0%);
+      opacity: 1;
+      transition: all .7s ease;
+    }
+
+    .swiper-scrollbar {
+      background: white;
+    }
+
+    .swiper-slide .drac img {
+      transition: filter .7s ease;
+      filter: grayscale(100%);
+    }
+
+    .swiper-slide-active .drac img {
+      filter: grayscale(0%) brightness(80%);
+    }
+
+    .swiper-pagination {
+      bottom: 60px !important;
+      display: flex !important;
+      justify-content: center !important;
+      gap: 1em !important;
+    }
+
+    .swiper-pagination-bullet {
+      opacity: 0.4 !important;
+      background: transparent !important;
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      width: 250px !important;
+      border-radius: 0 !important;
+    }
+
+    .swiper-pagination-bullet-active {
+      font-size: 30px !important;
+      width: 80px !important;
+      height: 55px !important;
+      border-radius: 0 !important;
+      box-shadow: inset 0 -6px 0px -1px white !important;
+      transition: box-shadow 0.4s linear;
+      opacity: 1 !important;
+    }
+
+    .swiper-arrows {
+      width: 100%;
+      height: 80px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 50%;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 80px !important;
+      height: 80px;
+      background-image: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      bottom: 0;
+      margin: 0;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      background: transparent !important;
+    }
+
+    .swiper-button-prev span,
+    .swiper-button-next span {
+      width: 20px !important;
+      height: 20px !important;
+      border-width: 2px !important;
+      border-color: white !important
+    }
+
+    .swiper-button-prev {
+      left: 0px !important;
+      right: auto !important;
+      /* background-color: rgba(255, 255, 255, 0.7); */
+    }
+
+    .swiper-button-next {
+      right: 0px !important;
+      /* background-color: rgba(255, 255, 255, 0.8); */
+    }
+
+    .swiper-button-prev span,
+    .swiper-button-next span {
+      width: 10px;
+      height: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* background-color: transparent; */
+      position: absolute;
+      border: solid 2px #666;
+      border-left: 0;
+      border-bottom: 0;
+      transition: all 0.1s ease;
+    }
+
+    .swiper-button-prev span {
+      transform: rotate(-135deg);
+      left: 49%;
+    }
+
+    .swiper-button-next span {
+      transform: rotate(45deg);
+      right: 49%;
+    }
+
+    .swiper-button-prev:hover span,
+    .swiper-button-next:hover span {
+      width: 5px;
+      height: 5px;
+    }
+
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      width: 0px;
+      height: inherit;
+      content: "";
+      position: absolute;
+      border-radius: 5px;
+      /* background-color: white; */
+      transition: all 0.4s ease-in-out;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .swiper-button-prev:after {
+      right: 0;
+    }
+
+    .swiper-button-next:after {
+      left: 0;
+    }
+
+    .swiper-button-prev:hover:after,
+    .swiper-button-next:hover:after {
+      width: inherit;
+    }
+
+    .swiper-button-disabled {
+      opacity: 1 !important;
+    }
+
+    .swiper-button-disabled.swiper-button-prev span,
+    .swiper-button-disabled.swiper-button-next span {
+      opacity: 0.2;
+    }
+
+    @media screen and (max-width: 512px) {
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        width: 60px;
+        height: 60px;
+        bottom: 0;
+      }
+
+      .swiper-arrows {
+        height: 60px;
+      }
+
+      .swiper-button-prev {
+        right: 60px;
+      }
+
+      .swiper-button-prev span {
+        left: 45%;
+      }
+
+      .swiper-button-next span {
+        right: 45%;
+      }
+    }
+
+    .swiper-button-next::after,
+    .swiper-container-rtl .swiper-button-prev::after {
+      content: "attr" !important;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-container-rtl .swiper-button-prev::after {
+      content: "attr" !important;
+    }
+
+
+    /* ======== BUTTON ========= */
+    .draw-border {
+      box-shadow: inset 0 0 0 4px transparent;
+      color: white;
+      transition: color 0.25s 0.0833333333s;
+      position: relative;
+    }
+
+    .draw-border::before,
+    .draw-border::after {
+      border: 0 solid transparent;
+      box-sizing: border-box;
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .draw-border::before {
+      border-bottom-width: 4px;
+      border-left-width: 4px;
+    }
+
+    .draw-border::after {
+      border-top-width: 4px;
+      border-right-width: 4px;
+    }
+
+    .draw-border:hover {
+      color: #c4c4c4;
+    }
+
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+      border-color: #c4c4c4;
+      transition: border-color 0s, width 0.2s, height 0.2s;
+      width: 100%;
+      height: 100%;
+    }
+
+    .draw-border:hover::before {
+      transition-delay: 0s, 0s, 0.2s;
+    }
+
+    .draw-border:hover::after {
+      transition-delay: 0s, 0.2s, 0s;
+    }
+
+    .btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1.5;
+      font-size: 1em;
+      font-weight: 700;
+      padding: 1em 2em;
+      letter-spacing: 0.05rem;
+      width: 24vmin;
+      background: rgb(123, 23, 23);
+      transition: background 0.01s linear;
+    }
+
+    .lightview {
+      color: rgb(10, 10, 10) !Important;
+      background: rgb(255, 255, 255);
+      transition: all 0.4s linear;
+    }
+
+    .btn:hover {
+      background: rgba(10, 10, 11, .3) !important;
+      color: #fff !important;
+      transition: all 0.4s linear;
+
+    }
+
+
+    /* ====== Mobile Settings ====== */
+    @media screen and (max-width: 700px) {
+      .swiper-pagination-bullet {
+        font-size: 16px !important;
+        height: 50px !important;
+      }
+
+      .swiper-slide-active .title-box {
+        transform: translate(-5%, 10%);
+      }
+
+      .title-box p {
+        font-size: 2.2vmin;
+      }
+
+      .btn {
+        font-size: 0.7em;
+        width: 40vmin;
+        margin: 3px
+      }
+
+      .drac img,
+      .drac.three img {
+        height: 97vh !important;
+      }
+
+      .swiper-arrows {
+        height: 150px;
+      }
+    }
+
+    .front-title {
+      font-size: 55pt;
+    }
+
+    @media screen and (max-width: 600px) {
+      .front-title {
+        font-size: 30pt;
+      }
+    }
+  </style>
+  </style>
+
+
+  <div class="introcontainer">
+    <!-- Slider main container -->
+    <div class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="dracs">
+            <div class="drac ong">
+              <img alt="3D Printing" src="image1.jpg" />
+              <div class="text">
+              </div>
+              <div class="title-box">
+                <h2 class="front-title">3D Printing</h2>
+                <div>
+                  <button id="getQuote" class="btn draw-border" onclick="goTo(this)">Get Quote</button>
+                  <button id="goToPrint" class="btn draw-border lightview" onclick="goTo(this)">Learn More</button>
+                </div>
+                <!-- <p>The future of the creative industry starts here, by Creatives, for Creatives.</p> -->
+                <!-- <div class="seperator"></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="dracs">
+            <div class="drac two">
+              <img src="imge.jpg" alt="3D Scannig" />
+              <div class="text">
+              </div>
+              <div class="title-box">
+                <h2 class="front-title">3D Scanning</h2>
+                <div><button id="goToScan" class="btn draw-border" onclick="goTo(this)">Learn More</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="dracs">
+            <div class="drac three">
+              <img src="image2.jpg" alt="Design for Additive Manufacturing" />
+
+              <div class="text">
+              </div>
+
+              <div class="title-box">
+                <h2 class="front-title">Design for <br>Additive <br>Manufacturing</h2>
+                <div><button id="goToDFAM" class="btn draw-border" onclick="goTo(this)">Learn More</button></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-arrows">
+        <div class="swiper-button-prev"><span></span></div>
+        <div class="swiper-button-next"><span></span></div>
+      </div>
+
+      <!-- If we need scrollbar -->
+    </div>
+  </div>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      speed: 800,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      centeredSlides: true,
+      paginationClickable: true,
+      watchSlidesProgress: true,
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 3000,
+      },
+      effect: "fade" // cube / slide / fade 
+
+    });
+    let pg1 = document.querySelector('[aria-label="Go to slide 1"]'),
+      pg2 = document.querySelector('[aria-label="Go to slide 2"]'),
+      pg3 = document.querySelector('[aria-label="Go to slide 3"]')
+
+    const content = (text, className = "namedpag") => {
+      return `<p class="${className}">${text}</p>`
+    }
+
+    [pg1.innerHTML, pg2.innerHTML, pg3.innerHTML] = [content("", "line"), content("", "line"), content("", "line")]
+
+    class Links {
+      constructor() {
+        this.urls = {
+          getQuote: "https://3dskai.com/online-3d-printing/",
+          goToPrint: "https://3dskai.com/3d-printing/",
+          goToScan: "https://3dskai.com/3d-scanning/",
+          goToDFAM: " https://3dskai.com/dfam/"
+        }
+      }
+
+      getURL(id) {
+        return this.urls[id]
+      }
+    }
+
+    const goTo = (elem) => {
+      let path = elem.id;
+      window.open(new Links().getURL(path), '_blank').focus()
+    }
+  </script>
+</body>
+
+</html>
