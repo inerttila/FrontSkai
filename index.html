@@ -29,7 +29,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgb(255, 255, 255);
+      background: rgb(10, 10, 11);
     }
 
     .dracs {
@@ -123,12 +123,12 @@
     }
 
     .swiper-slide .drac img {
-      transition: filter .7s ease;
+      transition: filter 1s ease;
       filter: grayscale(100%);
     }
 
     .swiper-slide-active .drac img {
-      filter: grayscale(0%) brightness(80%);
+      filter: grayscale(0%) brightness(100%);
     }
 
 
@@ -344,7 +344,7 @@
         <div class="swiper-slide">
           <div class="dracs">
             <div class="drac ong">
-              <img alt="3D Printing" src="image1.jpg" />
+              <img alt="3D Printing" src="3dprining.jpg" />
               <div class="text">
               </div>
               <div class="title-box">
@@ -363,7 +363,7 @@
         <div class="swiper-slide">
           <div class="dracs">
             <div class="drac two">
-              <img src="imge.jpg" alt="3D Scannig" />
+              <img src="3dscanning.jpg" alt="3D Scannig" />
               <div class="text">
               </div>
               <div class="title-box">
@@ -378,7 +378,7 @@
         <div class="swiper-slide">
           <div class="dracs">
             <div class="drac three">
-              <img src="image2.jpg" alt="Design for Additive Manufacturing" />
+              <img src="3ddesing.jpg" alt="Design for Additive Manufacturing" />
               <div class="text">
               </div>
               <div class="title-box">
@@ -425,9 +425,12 @@
       autoplay: {
         delay: 3000,
       },
-      effect: "fade" // cube / slide / fade 
-
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true
+      }
     });
+
     let pg1 = document.querySelector('[aria-label="Go to slide 1"]'),
       pg2 = document.querySelector('[aria-label="Go to slide 2"]'),
       pg3 = document.querySelector('[aria-label="Go to slide 3"]')
