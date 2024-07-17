@@ -8,18 +8,18 @@
 </head>
 
 <body>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
   <style>
     .introcontainer {
       width: 100%;
       height: 100%;
-      /* margin: auto; */
     }
 
     .swiper-container {
       width: 100%;
-      /* height: 100vh; */
       background: rgb(10, 10, 11);
     }
 
@@ -27,7 +27,6 @@
       width: 500px;
       height: 100%;
       display: flex;
-      /* margin: auto; */
       align-items: center;
       justify-content: center;
       background: rgb(255, 255, 255);
@@ -44,8 +43,6 @@
 
     .drac img {
       object-fit: cover;
-      /* border-radius: 5px; */
-      /* max-width: 100%; */
       width: 100vw;
       height: auto;
       height: 100vh;
@@ -78,32 +75,21 @@
 
     .title-box {
       display: flex;
-      text-align: left;
-      max-width: 1000px;
+      text-align: center;
       flex-direction: column;
       flex-wrap: nowrap;
       position: absolute;
-      top: 0;
-      left: 12%;
+      top: 10%;
+      left: 0%;
       right: 0 !important;
-      bottom: 50px;
-      justify-content: center;
+      bottom: 65px;
       color: #fff;
       opacity: 0;
       z-index: 15;
     }
 
-    .title-box h1 {
-      display: block;
-      /* font-family: "Futura"; */
-      font-weight: 700;
-      line-height: normal;
-      max-width: 100%;
-      font-size: 10vmin;
-    }
 
     .title-box p {
-      /* font-family: "HelveticaNow"; */
       font-size: 2vmin;
       padding-top: 0;
       margin: 0;
@@ -182,7 +168,7 @@
       bottom: 50%;
     }
 
-    .swiper-button-prev,
+
     .swiper-button-next {
       width: 80px !important;
       height: 80px;
@@ -198,6 +184,7 @@
       background: transparent !important;
     }
 
+
     .swiper-button-prev span,
     .swiper-button-next span {
       width: 20px !important;
@@ -209,12 +196,10 @@
     .swiper-button-prev {
       left: 0px !important;
       right: auto !important;
-      /* background-color: rgba(255, 255, 255, 0.7); */
     }
 
     .swiper-button-next {
       right: 0px !important;
-      /* background-color: rgba(255, 255, 255, 0.8); */
     }
 
     .swiper-button-prev span,
@@ -224,7 +209,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /* background-color: transparent; */
       position: absolute;
       border: solid 2px #666;
       border-left: 0;
@@ -255,148 +239,39 @@
       content: "";
       position: absolute;
       border-radius: 5px;
-      /* background-color: white; */
       transition: all 0.4s ease-in-out;
       z-index: -1;
       opacity: 0.8;
     }
 
-    .swiper-button-prev:after {
-      right: 0;
-    }
-
-    .swiper-button-next:after {
-      left: 0;
-    }
-
-    .swiper-button-prev:hover:after,
-    .swiper-button-next:hover:after {
-      width: inherit;
-    }
-
-    .swiper-button-disabled {
-      opacity: 1 !important;
-    }
-
-    .swiper-button-disabled.swiper-button-prev span,
-    .swiper-button-disabled.swiper-button-next span {
-      opacity: 0.2;
-    }
-
-    @media screen and (max-width: 512px) {
-
-      .swiper-button-prev,
-      .swiper-button-next {
-        width: 60px;
-        height: 60px;
-        bottom: 0;
-      }
-
-      .swiper-arrows {
-        height: 60px;
-      }
-
-      .swiper-button-prev {
-        right: 60px;
-      }
-
-      .swiper-button-prev span {
-        left: 45%;
-      }
-
-      .swiper-button-next span {
-        right: 45%;
-      }
-    }
-
-    .swiper-button-next::after,
-    .swiper-container-rtl .swiper-button-prev::after {
-      content: "attr" !important;
-    }
-
-    .swiper-button-prev::after,
-    .swiper-container-rtl .swiper-button-prev::after {
-      content: "attr" !important;
-    }
-
-
-    /* ======== BUTTON ========= */
-    .draw-border {
-      box-shadow: inset 0 0 0 4px transparent;
-      color: white;
-      transition: color 0.25s 0.0833333333s;
-      position: relative;
-    }
-
-    .draw-border::before,
-    .draw-border::after {
-      border: 0 solid transparent;
-      box-sizing: border-box;
-      content: "";
-      pointer-events: none;
-      position: absolute;
-      width: 0;
-      height: 0;
-      bottom: 0;
-      right: 0;
-    }
-
-    .draw-border::before {
-      border-bottom-width: 4px;
-      border-left-width: 4px;
-    }
-
-    .draw-border::after {
-      border-top-width: 4px;
-      border-right-width: 4px;
-    }
-
-    .draw-border:hover {
-      color: #c4c4c4;
-    }
-
-    .draw-border:hover::before,
-    .draw-border:hover::after {
-      border-color: #c4c4c4;
-      transition: border-color 0s, width 0.2s, height 0.2s;
-      width: 100%;
-      height: 100%;
-    }
-
-    .draw-border:hover::before {
-      transition-delay: 0s, 0s, 0.2s;
-    }
-
-    .draw-border:hover::after {
-      transition-delay: 0s, 0.2s, 0s;
-    }
-
+    /* ----------- buttton ------------------- */
     .btn {
-      background: none;
+      background: rgb(255 255 255 / 0%);
       border: none;
       cursor: pointer;
-      line-height: 1.5;
       font-size: 1em;
       font-weight: 700;
       padding: 1em 2em;
-      letter-spacing: 0.05rem;
-      width: 24vmin;
-      background: rgb(123, 23, 23);
-      transition: background 0.01s linear;
+      width: 16vmin;
+      transition: background 0.01s linear, border 0.4s linear, color 0.4s linear;
+      border: 1px solid white;
+      border-radius: 30px;
+      color: white;
     }
 
     .lightview {
-      color: rgb(10, 10, 10) !Important;
+      color: rgb(10, 10, 10) !important;
       background: rgb(255, 255, 255);
       transition: all 0.4s linear;
     }
 
     .btn:hover {
-      background: rgba(10, 10, 11, .3) !important;
-      color: #fff !important;
+      border: none;
+      background: black !important;
+      color: white !important;
       transition: all 0.4s linear;
-
     }
+
 
 
     /* ====== Mobile Settings ====== */
@@ -431,12 +306,32 @@
     }
 
     .front-title {
-      font-size: 55pt;
+      font-size: 30pt;
+      font-family: 'Roboto', sans-serif;
     }
+
+    .second-title {
+      font-size: 12pt;
+      margin-top: 0;
+      font-family: 'Open Sans', sans-serif;
+      opacity: 0.5;
+    }
+
+    .tri-title {
+      font-size: 13pt;
+      font-family: 'Open Sans', sans-serif;
+      opacity: 0.8;
+      margin: 0;
+    }
+
 
     @media screen and (max-width: 600px) {
       .front-title {
-        font-size: 30pt;
+        font-size: 15pt;
+      }
+
+      .second-title {
+        font-size: 9pt;
       }
     }
   </style>
@@ -456,13 +351,14 @@
               <div class="text">
               </div>
               <div class="title-box">
+                <h4 class="tri-title">This link imports Open Sans in the</h4>
                 <h2 class="front-title">3D Printing</h2>
+                <h5 class="second-title">The future of the creative industry starts here, by Creatives, for Creatives
+                </h5>
                 <div>
                   <button id="getQuote" class="btn draw-border" onclick="goTo(this)">Get Quote</button>
                   <button id="goToPrint" class="btn draw-border lightview" onclick="goTo(this)">Learn More</button>
                 </div>
-                <!-- <p>The future of the creative industry starts here, by Creatives, for Creatives.</p> -->
-                <!-- <div class="seperator"></div> -->
               </div>
             </div>
           </div>
@@ -475,6 +371,8 @@
               </div>
               <div class="title-box">
                 <h2 class="front-title">3D Scanning</h2>
+                <h5 class="second-title">The future of the creative industry starts here, by Creatives, for Creatives
+                </h5>
                 <div><button id="goToScan" class="btn draw-border" onclick="goTo(this)">Learn More</button></div>
               </div>
             </div>
@@ -484,14 +382,14 @@
           <div class="dracs">
             <div class="drac three">
               <img src="image2.jpg" alt="Design for Additive Manufacturing" />
-
               <div class="text">
               </div>
-
               <div class="title-box">
-                <h2 class="front-title">Design for <br>Additive <br>Manufacturing</h2>
+                <h4 class="tri-title">This link imports Open Sans in the</h4>
+                <h2 class="front-title">Design for Additive Manufacturing</h2>
+                <h5 class="second-title">The future of the creative industry starts here, by Creatives, for Creatives
+                </h5>
                 <div><button id="goToDFAM" class="btn draw-border" onclick="goTo(this)">Learn More</button></div>
-
               </div>
             </div>
           </div>
