@@ -4,25 +4,11 @@
     src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
   }
 
-  *,
-  *:after,
-  *:before {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-snap-type: y mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
   body {
-    min-height: 100vh;
     font-family: "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
     font-weight: 80;
     background: black;
-    color: hsl(0 0% 90%);
-    overflow-x: hidden;
+    color: hsl(0, 0%, 100%);
   }
 
   p {
@@ -224,29 +210,6 @@
 
   .filler {
     display: none;
-  }
-
-  /* Scroll indicators */
-  .indicators {
-    width: 20px;
-    aspect-ratio: 1 / 7;
-    position: fixed;
-    top: 50%;
-    right: 1rem;
-    z-index: 999999;
-    translate: 0 -50%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .indicator {
-    background: linear-gradient(white, white) padding-box;
-    border-radius: 100px;
-    width: 100%;
-    min-height: 20px;
-    display: inline-block;
-    flex: 1;
-    border: 2px solid transparent;
   }
 
   html {
@@ -477,69 +440,12 @@
         scale: 0.35 0.5;
       }
     }
-
-
-
-    /* Scroll indication work */
-    :root {
-      timeline-scope:
-        --article-one,
-        --article-two,
-        --article-three,
-        --article-four,
-        --article-five;
-    }
-
-    .indicator {
-      animation: activate, deactivate;
-      animation-fill-mode: both;
-      animation-timing-function: linear;
-      animation-range: entry, exit;
-    }
-
-    .indicator:nth-of-type(1) {
-      animation-timeline: --article-one;
-    }
-
-    .indicator:nth-of-type(2) {
-      animation-timeline: --article-two;
-    }
-
-    .indicator:nth-of-type(3) {
-      animation-timeline: --article-three;
-    }
-
-    .indicator:nth-of-type(4) {
-      animation-timeline: --article-four;
-    }
-
-    .indicator:nth-of-type(5) {
-      animation-timeline: --article-five;
-    }
-
-    @keyframes activate {
-      to {
-        flex: 3;
-      }
-    }
-
-    @keyframes deactivate {
-      to {
-        flex: 1;
-      }
-    }
   }
 </style>
 
 <body>
 
-  <div class="indicators">
-    <a href="#item-1" class="indicator"></a>
-    <a href="#item-2" class="indicator"></a>
-    <a href="#item-3" class="indicator"></a>
-    <a href="#item-4" class="indicator"></a>
-    <a href="#item-5" class="indicator"></a>
-  </div>
+
   <main>
     <section>
       <article id="item-1">
@@ -830,25 +736,5 @@
         end: "top 20%"
       }
     });
-
-    // Scroll indicator trickery
-    const INDICATORS = document.querySelectorAll(".indicator");
-    const ARTICLES = document.querySelectorAll("article");
-    INDICATORS.forEach((indicator, index) => {
-      // Here need to animate the indicator based on the position of the card
-      gsap.to(indicator, {
-        flex: 3,
-        repeat: 1,
-        yoyo: true,
-        scrollTrigger: {
-          scrub: true,
-          trigger: ARTICLES[index],
-          scroller: "body",
-          start: "top bottom",
-          end: "bottom top"
-        }
-      });
-    });
   }
-
 </script>
